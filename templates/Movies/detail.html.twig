@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ onCoverProgram.title }}
+{% endblock %}
+
+{% block metadesc %}
+Enjoy {{ onCoverProgram.title }} with your application Movie Night!
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('movie') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('onCoverProgram') }}
+{% endblock %}
+
+{% block body %}
+    {% include 'Components/_onCoverProgram.html.twig' %}
+{% endblock %}

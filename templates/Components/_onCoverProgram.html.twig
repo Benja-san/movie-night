@@ -1,0 +1,65 @@
+<div class="onCoverContainer">
+    <img class="coverImage" src="{{ onCoverProgram.background }}" alt="{{ onCoverProgram.title }} - cover">
+    <div class="overlay" ></div>
+    <article class="contentContainer" >
+        <h1 class="title" >{{ onCoverProgram.title }}</h1>
+        <h2 class="categoryTitle">{{ onCoverProgram.type }} - {{ onCoverProgram.category.name }}</h2>
+        <p class="synopsis">{{ onCoverProgram.synopsis }}</p>
+        <a class="accessLink" href="{{ path('movie_detail', {'slug' : onCoverProgram.slug}) }}">Watch now!</a>
+    </article>
+
+    {% if isFullPage is defined %}
+    <nav class="serieNavigation">
+        <ul class="iconsContainer">
+
+            <li class="iconList">
+                <a class="iconButton" href="{{ path('movies_list') }}">
+                    <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M157.9 86.8167C157.9 86.8167 82.8833 161.9 53.6667 191.133C51.2167 193.567 50 196.767 50 199.967C50 203.167 51.2167 206.367 53.6667 208.8C82.8667 238.033 157.867 313.083 157.867 313.083C160.283 315.5 163.467 316.7 166.65 316.7C169.833 316.683 173.033 315.467 175.483 313.017C180.367 308.133 180.383 300.25 175.55 295.4L92.6167 212.467H337.483C344.383 212.467 349.983 206.867 349.983 199.967C349.983 193.067 344.383 187.467 337.483 187.467H92.6167L175.583 104.483C180.4 99.6667 180.367 91.8 175.483 86.9167C173.033 84.4667 169.833 83.2333 166.65 83.2333C163.467 83.2167 160.317 84.4167 157.9 86.8167V86.8167Z" fill="#F4EBEB"/>
+                    </svg>
+                </a>
+            </li>
+            {% if onCoverProgram.seasons is empty %}
+            {% else %}
+            <li class="iconList">
+                <button class="iconButton" type="button" id="seasonDisplayer" >
+                    <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_209_82)">
+                            <path d="M359.35 266.667L339.35 366.667H60.6667L40.6667 266.667H359.35ZM400 233.333H0L33.3333 400H366.667L400 233.333ZM342.6 33.3167L349.917 0H50.0167L57.3333 33.3167H342.6ZM370.933 100L377.1 66.6667H22.8333L29 100H370.933ZM42.0833 200L37.8333 166.667H362L357.633 200H391.25L400 133.333H0L8.48333 200H42.0833V200Z" fill="#F4EBEB"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_209_82">
+                            <rect width="400" height="400" fill="white"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+        {% if onCoverProgram.seasons is empty %}
+        {% else %}
+        <nav>
+            <ul class="seasonContainer hidden" id="seasonContainer" >
+                {% for season in onCoverProgram.seasons %}
+                    <li class="seasonList {{ season.number is same as(selectedSeason.getSelectedSeason.number) ? 'isSelected' : '' }}" >
+                        <a href="/movies/{{ onCoverProgram.slug }}?season={{ season.number }}" class="seasonButton" type="button" >
+                            Season {{ season.number }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="episodeContainer hidden" id="episodeContainer">
+                {% for episode in selectedSeason.getSelectedSeason.episodes %}
+                    <li>
+                        {{ episode.title }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        {% endif %}
+    {% endif %}
+</div>

@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+Movies
+{% endblock %}
+
+{% block metadesc %}
+Watch the movie you want among an amazing selection prepared just for you!
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('movies') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('onCoverProgram') }}
+{% endblock %}
+
+{% block body %}
+
+    <section class="onCoverSection">
+        {% include 'Components/_onCoverProgram.html.twig' %}
+    </section>
+    {% for category in wallet %}
+    <section class="categorySection">
+        <h2 class="categoryName" >{{ category.name }}</h2>
+        <ul class="programsContainer">
+            {% for program in category.programs %}
+            <li class="programCard">
+                <a class="programLink" href="{{ path('movie_detail', {'slug' : program.slug}) }}">
+                    <div class="programImageContainer" >
+                        <img class="programImage" src="{{ program.poster }}" alt="{{ program.title }} - poster">
+                        <div class="overlay" ></div>
+                    </div>
+                    <div class="programInfo">
+                        <h3 class="littleTitle programTitle" >{{ program.title }}</h3>
+                        <h4 class="programType" >{{ program.type }}</h4>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+{% endblock %}

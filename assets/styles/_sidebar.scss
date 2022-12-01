@@ -1,0 +1,26 @@
+.globalSidebar{
+    position: absolute;
+    top: calc($globalPadding / 4);
+    left: calc($globalPadding / 4);
+    z-index: 1;
+    .magnifierButton{
+        svg{
+            width: calc($globalPadding / 2);
+            height: calc($globalPadding / 2);
+            transition: width .4s, height .4s;
+            path{
+                transition: fill .4s;
+            }
+        }
+
+        &:hover{
+            svg{
+                width: 45px;
+                height: 45px;
+                path{
+                    fill: $secondaryColor;
+                }
+            }
+        }
+    }
+}

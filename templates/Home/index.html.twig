@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block metadesc %}
+Welcome to Movie Night! - Enjoy your movies everywhere, anytime! It is time to watch movies!
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('index') }}
+{% endblock %}
+
+{% block body %}
+    <section class="homeSection">
+        <h1 class="bigTitle">Movie Night !</h1>
+        <a class="bigAccessLink" href="/movies">Start Watching !</a>
+    </section>
+
+{% endblock %}

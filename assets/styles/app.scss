@@ -1,0 +1,125 @@
+@import '_import.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    color: $tertiaryColor;
+}
+
+a, a:visited{
+    text-decoration: none;
+}
+
+button, input, textarea{
+    background-color: transparent;
+    border: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+ul, li{
+    list-style-type: none;
+}
+
+.littleTitle, .title, .bigTitle{
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    justify-content: center;
+    transition: color .4s;
+}
+
+.littleTitle{
+    color: $tertiaryColor;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.title{
+    color: $secondaryColor;
+    font-size: 3rem;
+    line-height: 3rem;
+    letter-spacing: 1px;
+}
+
+.bigTitle{
+    color: $secondaryColor;
+    font-size: 5rem;
+    letter-spacing: 5px;
+}
+
+.accessLink, .bigAccessLink{
+    color: $tertiaryColor;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid $tertiaryColor;
+    border-radius: 25px;
+    transition: color .4s, background-color .4s;
+}
+
+.accessLink{
+    padding: 5px 15px;
+    font-size: 1rem;
+}
+
+.bigAccessLink{
+    font-size: 1.5rem;
+    padding: 7px 25px;
+}
+
+.accessLink:hover, .bigAccessLink:hover{
+    background-color: $tertiaryColor;
+    color: $primaryColor;
+}
+
+.categoryTitle{
+    font-size: .8rem;
+    &::first-letter{
+        text-transform: uppercase;
+    }
+}
+
+body {
+    background-color: $primaryColor;
+    main{
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        /* width */
+        &::-webkit-scrollbar {
+            width: 7px;
+        }
+        
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: $tertiaryColor;
+        }
+        
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: $secondaryColor;
+        }
+        
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+.focused{
+    color: $secondaryColor !important;
+    svg{
+        path, rect{
+            fill: $secondaryColor !important;
+        }
+    }
+}
